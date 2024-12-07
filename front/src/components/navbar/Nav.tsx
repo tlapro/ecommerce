@@ -3,6 +3,7 @@
 import Link from "next/link";
 import styles from "./Nav.module.css";
 import { useState } from "react";
+import { navConfig, NavItem } from "@/config/navConfig";
 
 
 const Nav = () => {
@@ -12,16 +13,19 @@ const Nav = () => {
         <div>
             <nav className={styles.navContainer}>
                 <div className={styles.logoContainer}>
-                    <h1>Mi Tienda</h1>
+                    <h1 className="cursor-pointer">My Apple Store</h1>
                 </div>
 
                 <div className={styles.navLinksContainer}>
-                    <Link className={styles.navLink} href="/">Home</Link>
-                    <Link className={styles.navLink} href="/landing">About</Link>
-                    <Link className={styles.navLink} href="/cart">Cart</Link>
-                    <Link className={styles.navLink} href="/dashboard">Profile</Link>
+                    {navConfig.map((navLink: NavItem) => {
+                        return ( 
+                        <Link key={navLink.path} className={styles.navLink} href={navLink.path}>{navLink.text}</Link>)
+                    })}
+                    
                     {loggedIn ? ( <button onClick={() => setLoggedIn(false)} className={styles.navButtonOut}>Logout</button>) 
-                    : (<button onClick={() => setLoggedIn(true)} className={styles.navButton}>Login</button>)}
+                    : (<Link href="/login" className={styles.navButton}>
+                        <button onClick={() => setLoggedIn(true)}>Login</button>
+                        </Link>)}
                     
                 </div>
             </nav>

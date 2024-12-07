@@ -1,5 +1,6 @@
  
   .footer {
+    margin-top: 200px;
     background-color: var(--background-color);
     color: var(--secondary-color);
     padding: 3rem 1rem;
@@ -44,6 +45,7 @@
     color: white;
     font-size: 0.95rem;
     line-height: 1.6;
+    width: 80%;
   }
   
   .list {
@@ -81,5 +83,19 @@
     transition: opacity 0.3s ease;
     cursor: default;
   }
-  
+  @media (max-width: 768px) { 
+      .container {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+      }
+      .column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 50%;
+      }
+   }
   
