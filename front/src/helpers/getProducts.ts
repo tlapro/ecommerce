@@ -1,7 +1,10 @@
-import products from "@/data/products";
+
 import { IProduct } from "@/interfaces/IProduct";
 
 
-export const getProducts= async (): Promise<IProduct[]>  => {
-    return products;
-};
+export const fetchProducts= async (): Promise<IProduct[]>  => {
+        const response = await fetch("http://localhost:3001/products");
+        const products = await response.json();
+        return products;
+    };
+

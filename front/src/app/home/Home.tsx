@@ -1,25 +1,15 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-"use client";
+
 import style from "./Home.module.css";
 import Card from "@/components/card/Card";
-import { getProducts } from "@/helpers/getProducts";
+import { fetchProducts } from "@/helpers/getProducts";
 import { IProduct } from "@/interfaces/IProduct";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 
-export const Home = () => {
 
-    const [products, setProducts] = useState<IProduct[]>([]);
-    useEffect(() => {
-        getProducts()
-        .then((res: IProduct[]) =>  {
-            setProducts(res);
-        })
-        .catch((e) => {
-            alert("Error al obtener los productos")
-        }
-    )}, []);
+export const Home = async () => {
+    const fetchData: IProduct[] = await fetchProducts();
+   
     return (
         <div>
          
@@ -27,7 +17,7 @@ export const Home = () => {
             <h1 className="titleContent">The Best Apple Products</h1>
             </div>
             <div className={style.cardsContainer}>
-                {products.map(({id, name, price, description, image, stock}) => {
+                {fetchData.map(({id, name, price, description, image, stock}) => {
                     return (
 
                     <Card 
