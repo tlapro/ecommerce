@@ -9,7 +9,7 @@ import { IProduct } from "@/interfaces/IProduct";
 
 export const Home = async () => {
     const fetchData: IProduct[] = await fetchProducts();
-   
+
     return (
         <div>
          

@@ -9,5 +9,4 @@ export const navConfig: NavItem[] = [
     { text: "About", path: "/landing" },
     { text: "Cart", path: "/cart" },
     { text: "Profile", path: "/dashboard" },
-    { text: "Login", path: "/login" },
 ];

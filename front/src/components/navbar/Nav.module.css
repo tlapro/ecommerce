@@ -34,35 +34,85 @@
 }
 
 .navButton {
+    margin: 10px 10px 0px 0px;
     text-align: center;
     background-color: var(--primary-color);
-    padding: 5px;
+    padding: 8px;
     width: 20%;
     border-radius: 8px;
     box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
 }
 .navButtonOut {
+    margin: 10px 10px 0px 0px;
     background-color: var(--secondary-color);
-    padding: 5px;
+    padding: 8px;
     width: 20%;
     border-radius: 8px;
     box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
 }
-@media (max-width: 768px) { 
-    .navContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+.navLinksContainer {
+    transition: all 0.3s ease-in-out;
+}
+
+.navOpen {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    position: absolute;
+    top: 8rem;
+    left: 0;
+    width: 100%;
+    background-color: var(--background-color);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navClosed {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    width: 100%;
+    background-color: var(--background-color);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menuButton {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
     .navLinksContainer {
+        visibility: visible;
+        opacity: 1;
+        position: static;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        justify-content: space-around;
-        width: 100%;
-        height: 50%;
-    } 
+        gap: 1rem;
+        padding: 0;
+        box-shadow: none;
+        transform: translateY(0);
+    }
+
+    .menuButton {
+        display: none;
+    }
+
     .navLink {
         padding: 10px;
     }
@@ -71,5 +121,11 @@
     }
     .navButtonOut {
         margin-bottom: 10px;
+    }
+    .menuButton {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
     }
 }

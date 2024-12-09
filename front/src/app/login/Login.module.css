@@ -73,7 +73,7 @@
     color: var(--primary-color);
 }
 .errorText {
-    color: rgb(187, 45, 45);
+    color: #bb2d2d;
     font-size: 1.2rem;
     margin-top: 5px;
 }

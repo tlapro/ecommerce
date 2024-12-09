@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-export default function Hero() {
-  const [animationFinished, setAnimationFinished] = useState(false);
+export default function Home() {
 
+  const [animationFinished, setAnimationFinished] = useState(false);
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnimationFinished(true);
