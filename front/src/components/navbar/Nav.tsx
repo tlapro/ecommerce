@@ -2,29 +2,33 @@
 
 import Link from "next/link";
 import styles from "./Nav.module.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { navConfig, NavItem } from "@/config/navConfig";
-import LoginProps from "@/interfaces/ILogin";
+import { UsersContext } from "@/context/UsersContext";
 
-
-const Nav = ({ token, setToken }: LoginProps) => {
+const Nav = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const { token, setToken } = useContext(UsersContext); // Usamos el contexto para obtener el token y setToken
     const [isLogged, setIsLogged] = useState(false);
 
+    // Controlamos el estado de si el usuario está logueado
     useEffect(() => {
-    if (token) {
-        setIsLogged(true);
-    } else {
-        setIsLogged(false);
-    }
+        if (token) {
+            setIsLogged(true);
+        } else {
+            setIsLogged(false);
+        }
     }, [token]);
-    
+
+
     const handleLogout = () => {
-        setToken(null);
-        localStorage.clear();
+        setToken(null); 
+        localStorage.removeItem("userToken"); 
+        setIsLogged(false); 
     };
 
     const toggleMenu = () => setMenuOpen(!menuOpen);
+
     return (
         <div>
             <nav className={styles.navContainer}>
@@ -43,18 +47,26 @@ const Nav = ({ token, setToken }: LoginProps) => {
                     }`}
                 >
                     {navConfig.map((navLink: NavItem) => {
-                        return ( 
-                        <Link key={navLink.path} className={styles.navLink} href={navLink.path}>{navLink.text}</Link>)
+                        return (
+                            <Link key={navLink.path} className={styles.navLink} href={navLink.path}>
+                                {navLink.text}
+                            </Link>
+                        );
                     })}
-                    
-                    {isLogged ? ( <button onClick={handleLogout} className={styles.navButtonOut}>Logout</button>) 
-                    : (<Link href="/login" className={styles.navButton}>
-                        <button>Login</button>
-                        </Link>)}
-                    
+
+                    {isLogged ? (
+                        <Link href="/login" className={`text-center ${styles.navButtonOut}`}>
+                            <button onClick={handleLogout}>Logout</button>
+                        </Link>
+                    ) : (
+                        <Link href="/login" className={styles.navButton}>
+                            <button>Login</button>
+                        </Link>
+                    )}
                 </div>
             </nav>
         </div>
-    )
+    );
 }
+
 export default Nav;

@@ -3,16 +3,19 @@
 "use client";
 import Link from "next/link";
 import style from "./Login.module.css";
-import { use, useEffect, useState } from "react";
-import LoginProps, { ILogin } from "@/interfaces/ILogin";
+import { use, useContext, useEffect, useState } from "react";
 import { validateField } from "@/helpers/loginValidate";
+import { UsersContext } from "@/context/UsersContext";
 
-export const Login = ({ token, setToken }: LoginProps) => {
 
+export const Login = () => {
+
+    const { loginUser, token } = useContext(UsersContext);
     const [userData, setUserData] = useState({
         email: "",
         password: ""
     });
+
 
     const [form, setForm] = useState<ILogin>({
         email: "",
@@ -44,25 +47,13 @@ export const Login = ({ token, setToken }: LoginProps) => {
         }));
     };
 
-    const handleSumbit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-
-        fetch("http://localhost:3001/users/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-    })
-    .then((response) => response.json())
-    .then((json => {
-    console.log(json.token)
-    setToken(json.token)
-    console.log(token)
-    localStorage.setItem("userToken", json.token)
-    }))
-    .catch((error) => console.log(error));
- }
+        if (loginUser) {
+          await loginUser(userData);
+          window.location.href = '/';
+        }
+      };
 
     return (
         <div>
@@ -72,7 +63,7 @@ export const Login = ({ token, setToken }: LoginProps) => {
             </div>
             <div>
                 <div className={style.loginContainer}>
-                    <form onSubmit={handleSumbit} className={style.loginForm} action="">
+                    <form onSubmit={handleSubmit} className={style.loginForm} action="">
                         <h1 className={`text-4xl font-bold text-center cursor-default mt-3 ${style.title}`}>Login</h1>
                         <hr className={style.line} />
                         <div className={style.loginReq}>
