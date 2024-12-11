@@ -1,15 +1,12 @@
 import { IProduct } from "@/interfaces/IProduct";
+import { getProducts } from "./getProducts";
 
-export const fetchProductById = async (id: number): Promise<IProduct> => {
-    const response = await fetch(`http://localhost:3001/products`, {
-        cache: "no-cache",
-    });
-    const products: IProduct[] = await response.json();
-    const product = products.find((product) => product.id === id);
 
-    if (!product) {
-        throw new Error(`Product with id ${id} not found`);
-    }
+export const getProductById = async (id: number): Promise<IProduct> => {
+    const products = await getProducts();
+    const product = products.find((product: IProduct) => product.id === id);
+
+    if (!product) throw Error(`Product with id ${id} not found`);
+    
     return product;
-
 };

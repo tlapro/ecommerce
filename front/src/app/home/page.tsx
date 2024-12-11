@@ -3,13 +3,13 @@
 
 import style from "./Home.module.css";
 import Card from "@/components/card/Card";
-import { fetchProducts } from "@/helpers/getProducts";
+import { getProducts } from "@/helpers/getProducts";
 import { IProduct } from "@/interfaces/IProduct";
 
 
-export const Home = async () => {
-    const fetchData: IProduct[] = await fetchProducts();
 
+export const Home = async () => {
+        const fetchData: IProduct[] = await getProducts();
     return (
         <div>
          

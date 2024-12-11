@@ -51,6 +51,7 @@ export const Register = () => {
                 <div className={style.containerTitle}>
                 <h1 className="titleContent">My Apple Store</h1>
                 </div>
+
                 <div className={style.registerContainer}>
                     <form className={style.registerForm} action="">
                         <h1 className={`text-4xl font-bold text-center cursor-default mt-3 ${style.title}`}>Register</h1>

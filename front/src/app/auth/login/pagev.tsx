@@ -3,14 +3,15 @@
 "use client";
 import Link from "next/link";
 import style from "./Login.module.css";
-import { use, useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import { validateField } from "@/helpers/loginValidate";
-import { UsersContext } from "@/context/UsersContext";
+
+import ILogin from "@/interfaces/ILogin";
 
 
-export const Login = () => {
+export const LoginForm = () => {
 
-    const { loginUser, token } = useContext(UsersContext);
+
     const [userData, setUserData] = useState({
         email: "",
         password: ""
@@ -48,12 +49,9 @@ export const Login = () => {
     };
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        if (loginUser) {
-          await loginUser(userData);
-          window.location.href = '/';
-        }
-      };
+         event.preventDefault();
+        alert("Login");
+    };
 
     return (
         <div>
@@ -105,4 +103,4 @@ export const Login = () => {
     )
 }
 
-export default Login;
+export default LoginForm;

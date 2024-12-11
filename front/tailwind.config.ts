@@ -15,6 +15,7 @@ export default {
         secondary: "#10232A",
         bgcolor: "#161616",
         hoverPrimary: "#c49976",
+        hoverSecondary: "#193641",
         thirdColor: "#A79E9C",
         warning: "#bb2d2d",
       },

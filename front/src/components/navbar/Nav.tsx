@@ -2,33 +2,21 @@
 
 import Link from "next/link";
 import styles from "./Nav.module.css";
-import { useContext, useEffect, useState } from "react";
 import { navConfig, NavItem } from "@/config/navConfig";
-import { UsersContext } from "@/context/UsersContext";
+import { useState } from "react";
+
 
 const Nav = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const { token, setToken } = useContext(UsersContext); // Usamos el contexto para obtener el token y setToken
     const [isLogged, setIsLogged] = useState(false);
 
     // Controlamos el estado de si el usuario está logueado
-    useEffect(() => {
-        if (token) {
-            setIsLogged(true);
-        } else {
-            setIsLogged(false);
-        }
-    }, [token]);
+    // const currentPath = 
+    // typeof window !== 'undefined' ? window.location.pathname : '';
 
 
-    const handleLogout = () => {
-        setToken(null); 
-        localStorage.removeItem("userToken"); 
-        setIsLogged(false); 
-    };
 
     const toggleMenu = () => setMenuOpen(!menuOpen);
-
     return (
         <div>
             <nav className={styles.navContainer}>
@@ -55,18 +43,19 @@ const Nav = () => {
                     })}
 
                     {isLogged ? (
-                        <Link href="/login" className={`text-center ${styles.navButtonOut}`}>
-                            <button onClick={handleLogout}>Logout</button>
+                        <Link href="/" className={`text-center ${styles.navButtonOut}`}>
+                            <button onClick={()=> setIsLogged(false)}>Logout</button>
                         </Link>
                     ) : (
-                        <Link href="/login" className={styles.navButton}>
-                            <button>Login</button>
+                        <Link href="/auth/login" className={`text-center ${styles.navButton}`}>
+                            <button onClick={()=> setIsLogged(true)}>Login</button>
                         </Link>
                     )}
                 </div>
             </nav>
         </div>
     );
+
 }
 
 export default Nav;
