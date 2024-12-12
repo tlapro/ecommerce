@@ -68,14 +68,34 @@ input::placeholder {
 }
 
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.animated-toast {
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Sombra sutil para darle profundidad */
+    animation: fadeIn 0.3s ease-in-out; /* Animación suave */
 }
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.toast-container {
+    margin-top: 20px; /* Espacio superior para que no quede pegado al borde */
+}
+
+.toast {
+    background-color: var(--background-color);
+    color: var(--third-color);
+    font-family: 'Arial', sans-serif;
+    border-left: 5px solid var(--primary-color); /* Barra de color primario a la izquierda */
+}
+
 
 @keyframes slideIn {
   0% {

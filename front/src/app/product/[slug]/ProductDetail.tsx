@@ -1,11 +1,13 @@
 import { getProductById } from "@/helpers/getOneProduct";
 import style from "./ProductDetail.module.css";
 import Image from "next/image";
+import { getProducts } from "@/helpers/getProducts";
+import Carrousel from "@/components/carrousel/Carrousel";
 
 export const ProductDetail = async ({ params }: { params: Promise<{ slug: string }> }) => {
     const { slug } = await params;
     const { id, name, price, description, image, stock, categoryId } = await getProductById(Number(slug));
-    
+    const products = getProducts();    
     return (
         
         <div className="w-full h-full flex items-center justify-center flex-col px-4">
@@ -32,9 +34,7 @@ export const ProductDetail = async ({ params }: { params: Promise<{ slug: string
                     <h2 className="text-2xl font-semibold text-primary text-center">Description</h2>
                     <p className="text-lg text-foreground text-justify">{description}</p>
                 <div className="grid grid-rows-2 gap-4 mt-10">
-                <div>
 
-                </div>
                  <div className="flex flex-col items-center justify-center gap-4">
                     <h2 className="text-xl font-semibold text-green-500 text-center">${price}</h2>
                     <button className="w-full md:w-auto bg-secondary hover:bg-hoverSecondary text-white py-2 px-6 rounded-lg text-lg font-semibold transition-colors duration-300">
@@ -44,6 +44,9 @@ export const ProductDetail = async ({ params }: { params: Promise<{ slug: string
         
                 </div>
                 </div>
+            </div>
+            <div>
+                < Carrousel />
             </div>
         </div>
     );

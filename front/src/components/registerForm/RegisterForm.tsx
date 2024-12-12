@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-key */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
@@ -8,16 +9,23 @@ import { useState } from "react";
 import { registerValidate } from "@/helpers/registerValidate";
 import SignUpConfig from "@/config/SignUpConfig";
 import FormInput from "./FormInput";
+import signUp from "@/helpers/singUp";
+import { Toast } from "../toast/Toast";
+import { useRouter } from "next/navigation";
+
+
+const initialForm: IRegister = {
+    name: "",
+    email: "",
+    password: "",
+    repeatPassword: "",
+    address: "",
+    phone: "",
+}
 
 export const RegisterForm = () => {
-
-    const [form, setForm] = useState<IRegister>({
-        name: "",
-        email: "",
-        password: "",
-        address: "",
-        phone: "",
-    })
+    const router = useRouter();
+    const [form, setForm] = useState<IRegister>(initialForm)
 
     const [errors, setErrors] = useState({
         name: "",
@@ -41,10 +49,22 @@ export const RegisterForm = () => {
             }));
     };
 
-    const handleSumbit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(form);
-        alert("Registered");
+            try {
+                await signUp(form);
+                Toast.fire({
+                    icon: 'success',
+                    title: 'User created successfully',
+                });
+                router.replace("/auth/login");
+            } catch (error: any) {
+                const errorMessage = error.response?.data?.message || "An error occurred";
+                Toast.fire({
+                    icon: 'error',
+                    title: errorMessage,
+                });
+            }
     }
 
     return (
@@ -55,14 +75,15 @@ export const RegisterForm = () => {
                 </div>
 
                 <div className={style.registerContainer}>
-                    <form className={style.registerForm} action="">
+                    <form className={style.registerForm} onSubmit={handleSubmit} action="">
                         <h1 className={`text-4xl font-bold text-center cursor-default mt-3 ${style.title}`}>Register</h1>
                         <hr className={style.line} />
 
-                        { SignUpConfig.map(({name, label, type, placeholder, errorMessage}) => {
+                        { SignUpConfig.map(({name, label, type, placeholder }) => {
                             return (
                                 <div className={style.registerReq}>
                                 <FormInput 
+                                key={name}
                                 name={name}
                                 label={label}
                                 type={type}
@@ -75,7 +96,7 @@ export const RegisterForm = () => {
                             )
                         })}
 
-                    <button className={style.registerButton} onClick={handleSumbit} type="submit">Register</button>
+                    <button className={style.registerButton} type="submit">Register</button>
                     <Link className={style.registerLink} href="/auth/login">
                         Already have an account? Login here
                     </Link>

@@ -5,12 +5,14 @@ import { createContext, ReactNode, useState } from "react";
 
 interface ProductContextType {
   products: IProduct[];
-  fetchProducts: () => Promise<IProduct[]>;
+  setProducts: React.Dispatch<React.SetStateAction<IProduct[]>>;
+  getProducts: () => Promise<IProduct[]>;
 }
 
 export const ProductContext = createContext<ProductContextType>({
   products: [],
-  fetchProducts: async () => [],
+  setProducts: () => {},
+  getProducts: () => Promise.resolve([]),
 });
 
 interface ProductProviderProps {
@@ -20,21 +22,32 @@ interface ProductProviderProps {
 export const ProductProvider = ({ children }: ProductProviderProps) => {
   const [products, setProducts] = useState<IProduct[]>([]);
 
-  const fetchProducts = async (): Promise<IProduct[]> => {
-    try {
-      const response = await fetch("http://localhost:3001/products");
+  const getProducts = async (): Promise<IProduct[]> => {
+    
+    if (products.length > 0) {      
+      return products;
+
+    } else {
+      const response = await fetch("http://localhost:3001/products", {
+        cache: "no-store",
+        
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch products");
+      }
       const data = await response.json();
-      setProducts(data);
-      return data;
-    } catch (error) {
-      console.error(`Failed to fetch products: ${error}`);
-      return [];
+      setProducts(data)
+      console.log("first charge at context from context", data);
+      
+      return products;
     }
   };
 
+
   const value = {
     products,
-    fetchProducts,
+    setProducts,
+    getProducts,
   };
 
   return (

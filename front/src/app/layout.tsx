@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/navbar/Nav";
 import Footer from "@/components/footer/Footer";
 import { ProductProvider } from "@/context/ProductContext";
+import ExcludedWrapped from "@/components/navbar/excludedWrapped";
 
 
 
@@ -36,12 +37,16 @@ export default function RootLayout({
       >
 
         <ProductProvider>
-          <Nav />
+          <ExcludedWrapped>
+            <Nav />
+          </ExcludedWrapped>
                 <main>{children}</main>
+          <ExcludedWrapped>
           <Footer />
+          </ExcludedWrapped>
         </ProductProvider>
 
-        {/* <ConditionalLayout>{children}</ConditionalLayout> */}
+
       </body>
     </html>
   );

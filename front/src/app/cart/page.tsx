@@ -1,7 +1,13 @@
-export const Cart = () => {
+import getOrders from "@/helpers/getOrders";
+import CartPage from "./CartPage";
+
+export const Cart = () => {    
+    
+    const order = getOrders();
+
     return (
         <div>
-            <h1>Cart Page</h1>
+            <CartPage order={order} />
         </div>
     )
 }

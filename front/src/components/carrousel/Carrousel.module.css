@@ -1,0 +1,35 @@
+.carrouselContainer {
+    display: flex;
+    gap: 1rem; /* Espacio entre los elementos */
+    overflow-x: auto; /* Scroll horizontal */
+    scroll-snap-type: x mandatory; /* Deslizar por secciones */
+    padding: 1rem;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.carrouselItem {
+    flex: 0 0 auto; 
+    scroll-snap-align: center; 
+    min-width: 300px; 
+    max-width: 300px; 
+    height: auto;
+    border: 1px solid var(--secondary-color); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    border-radius: 8px;
+    background-color: var(--primary-bg-color);
+}
+
+.containerTitle {
+    font-family: var(--primary-font);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 2.5rem;
+    height: 100px;
+    width: 100%;
+    color: var(--third-color);
+    text-shadow: 0px 0px 10px rgb(0, 0, 0);
+}
+

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-key */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
@@ -6,14 +7,18 @@ import style from "./LoginForm.module.css"
 import { useState } from "react";
 import { validateField } from "@/helpers/loginValidate";
 
-import ILogin from "@/interfaces/ILogin";
+
 import formConfig from "@/config/LoginConfig";
 import LoginInput from "./LoginInput";
+import { Toast } from "../toast/Toast";
+import { useRouter } from "next/navigation";
+import login from "@/helpers/login";
+import { ILogin } from "@/interfaces/ILogin";
 
 
 export const LoginForm = () => {
+    const router = useRouter();
     const loginConfig = formConfig;
-
 
     const [form, setForm] = useState<ILogin>({
         email: "",
@@ -29,7 +34,7 @@ export const LoginForm = () => {
         event.preventDefault();
         const { name, value } = event.target;
 
-        setForm((prevState) => ({
+        setForm((prevState: ILogin) => ({
             ...prevState,
             [name]: value,
         }));
@@ -44,8 +49,21 @@ export const LoginForm = () => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
          event.preventDefault();
+        try {
+            await login(form);
+            Toast.fire({icon: 'success',title: 'Login successful'});
+            router.replace("/home");
+        } catch (error: any) {
+            const errorMessage = error.response.data.message;
+            const messageToShow = [
+                "Invalid password",
+                 "User does not exist"]
+                 .includes(errorMessage) 
+                 ? "Invalid credentials" 
+                 : errorMessage;
 
-        alert("Login");
+            Toast.fire({icon: 'error', title: messageToShow});
+        }
     };
 
     return (
@@ -64,6 +82,7 @@ export const LoginForm = () => {
                             return ( 
 
                             <LoginInput
+                            key={name}
                             name={name}
                             label={label}
                             type={type}
