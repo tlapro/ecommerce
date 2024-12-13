@@ -3,8 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/navbar/Nav";
 import Footer from "@/components/footer/Footer";
-import { ProductProvider } from "@/context/ProductContext";
 import ExcludedWrapped from "@/components/navbar/excludedWrapped";
+import { AuthProvider } from "@/context/AuthContext";
 
 
 
@@ -36,7 +36,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
 
-        <ProductProvider>
+        <AuthProvider>
           <ExcludedWrapped>
             <Nav />
           </ExcludedWrapped>
@@ -44,7 +44,7 @@ export default function RootLayout({
           <ExcludedWrapped>
           <Footer />
           </ExcludedWrapped>
-        </ProductProvider>
+        </AuthProvider>
 
 
       </body>

@@ -52,7 +52,7 @@
     font-size: 1.3rem;
     color: white;
     text-align: center;
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     padding: 5px;
     margin: 20px 0px 20px 0px;
     width: 30%;
@@ -61,7 +61,7 @@
     transition: 0.5s ease;
 }
 .registerButton:hover {
-    background-color: var(--hover-primary);
+    background-color: var(--hover-secondary);
 
 }
 .registerLink {
@@ -78,4 +78,12 @@
     color: rgb(187, 45, 45);
     font-size: 1.2rem;
     margin-top: 5px;
+}
+@media (max-width: 768px) {
+    .registerContainer {
+        width: 100%;
+    }
+    .registerForm {
+        width: 90%;
+    }
 }

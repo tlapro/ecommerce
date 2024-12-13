@@ -13,7 +13,7 @@ export default function LoginInput({
     label: string;
     type: string;
     value: string;
-    onChange: (e) => void;
+    onChange: (e : React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string
     errorMessage: string;
 }) {

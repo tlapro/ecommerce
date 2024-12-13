@@ -1,0 +1,31 @@
+
+
+.navButton {
+    margin: 10px 10px 0px 0px;
+    text-align: center;
+    background-color: var(--primary-color);
+    padding: 8px;
+    width: 20%;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
+}
+.navButtonOut {
+    margin: 10px 10px 0px 0px;
+    background-color: var(--secondary-color);
+    padding: 8px;
+    width: 20%;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
+}
+
+@media (min-width: 768px) {
+    .navButtonOut {
+        margin-bottom: 10px;
+    }
+    .menuButton {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+}

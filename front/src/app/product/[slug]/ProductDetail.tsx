@@ -7,7 +7,7 @@ import Carrousel from "@/components/carrousel/Carrousel";
 export const ProductDetail = async ({ params }: { params: Promise<{ slug: string }> }) => {
     const { slug } = await params;
     const { id, name, price, description, image, stock, categoryId } = await getProductById(Number(slug));
-    const products = getProducts();    
+  
     return (
         
         <div className="w-full h-full flex items-center justify-center flex-col px-4">
@@ -46,7 +46,7 @@ export const ProductDetail = async ({ params }: { params: Promise<{ slug: string
                 </div>
             </div>
             <div>
-                < Carrousel />
+                < Carrousel id={id} />
             </div>
         </div>
     );

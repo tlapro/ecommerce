@@ -12,11 +12,14 @@ import formConfig from "@/config/LoginConfig";
 import LoginInput from "./LoginInput";
 import { Toast } from "../toast/Toast";
 import { useRouter } from "next/navigation";
-import login from "@/helpers/login";
 import { ILogin } from "@/interfaces/ILogin";
 
+import { usePublic } from "@/hooks/usePublic";
+import { useAuth } from "@/context/AuthContext";
 
 export const LoginForm = () => {
+    // usePublic();
+    const { login } = useAuth();
     const router = useRouter();
     const loginConfig = formConfig;
 
@@ -51,8 +54,10 @@ export const LoginForm = () => {
          event.preventDefault();
         try {
             await login(form);
-            Toast.fire({icon: 'success',title: 'Login successful'});
-            router.replace("/home");
+            const userString = localStorage.getItem("user.name");
+            const user = userString ? JSON.parse(userString) : null;
+            Toast.fire({icon: 'success',title: `Welcome ${user?.name}!`});
+
         } catch (error: any) {
             const errorMessage = error.response.data.message;
             const messageToShow = [

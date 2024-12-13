@@ -1,25 +1,12 @@
-'use client'
-
 import Link from "next/link";
 import styles from "./Nav.module.css";
 import { navConfig, NavItem } from "@/config/navConfig";
+import UserAvatar from "../UserAvatar/UserAvatar";
 
 
 const Nav = () => {
-    
 
-
-    // Controlamos el estado de si el usuario está logueado
-    // const currentPath = 
-    // typeof window !== 'undefined' ? window.location.pathname : '';
-
-
-
-    // const toggleMenu = () => setMenuOpen(!menuOpen);
-
-        
-        
-        return (
+    return (
         <div>
             <nav className={styles.navContainer}>
                 <div className={styles.logoContainer}>
@@ -40,19 +27,8 @@ const Nav = () => {
                             </Link>
                         );
                     })}
-
-                        <Link href="/auth/login" className={`text-center ${styles.navButton}`}>
-                            <button >Login</button>
-                        </Link>
-                        {/* <Link href="/" className={`text-center ${styles.navButtonOut}`}>
-                            <button>Logout</button>
-                        </Link> */}
-                     
-                    {/* : (
-                        <Link href="/auth/login" className={`text-center ${styles.navButton}`}>
-                            <button onClick={()=> setIsLogged(true)}>Login</button>
-                        </Link>
-                    )} */}
+                    <UserAvatar />
+                        
                 </div>
             </nav>
         </div>

@@ -1,21 +1,31 @@
-.carrouselContainer {
+.carrouselWrapper {
     display: flex;
-    gap: 1rem; /* Espacio entre los elementos */
-    overflow-x: auto; /* Scroll horizontal */
-    scroll-snap-type: x mandatory; /* Deslizar por secciones */
-    padding: 1rem;
-    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.carrouselContainerWrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
     margin: 0 auto;
 }
 
+.carrouselContainer {
+    display: flex;
+    gap: 1rem;
+    overflow: hidden; 
+    width: 100%;
+}
+
 .carrouselItem {
-    flex: 0 0 auto; 
-    scroll-snap-align: center; 
-    min-width: 300px; 
-    max-width: 300px; 
-    height: auto;
-    border: 1px solid var(--secondary-color); 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    flex: 0 0 auto;
+    min-width: 400px;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     background-color: var(--primary-bg-color);
 }
@@ -25,11 +35,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
     font-size: 2.5rem;
-    height: 100px;
-    width: 100%;
+    margin-bottom: 1rem;
     color: var(--third-color);
     text-shadow: 0px 0px 10px rgb(0, 0, 0);
+}
+
+.navButton {
+    margin: 0px 1rem 0px 1rem;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+.navButton:hover {
+    background-color: var(--secondary-color);
+}
+.navButton:disabled {
+    background-color: var(--disabled-color);
+}
+
+.navButton:hover:not(:disabled) {
+    transform: scale(1.1);
 }
 

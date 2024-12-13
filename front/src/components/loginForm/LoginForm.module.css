@@ -52,7 +52,7 @@
     font-size: 1.3rem;
     color: white;
     text-align: center;
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     padding: 5px;
     margin: 20px 0px 20px 0px;
     width: 30%;
@@ -61,7 +61,7 @@
     transition: 0.5s ease;
 }
 .loginButton:hover {
-    background-color: var(--hover-primary);
+    background-color: var(--hover-secondary);
 }
 .registerLink {
     font-size: 1.2rem;
@@ -76,4 +76,12 @@
     color: #bb2d2d;
     font-size: 1.2rem;
     margin-top: 5px;
+}
+@media (max-width: 768px) {
+    .loginContainer {
+        width: 100%;
+    }
+    .loginForm {
+        width: 90%;
+    }
 }
