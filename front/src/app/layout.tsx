@@ -3,8 +3,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/navbar/Nav";
 import Footer from "@/components/footer/Footer";
-import ExcludedWrapped from "@/components/navbar/excludedWrapped";
 import { AuthProvider } from "@/context/AuthContext";
+import ExcludedWrapped from "@/components/navbar/ExcludedWrapped";
+import { CartProvider } from "@/context/CartContext";
 
 
 
@@ -37,13 +38,15 @@ export default function RootLayout({
       >
 
         <AuthProvider>
-          <ExcludedWrapped>
-            <Nav />
-          </ExcludedWrapped>
-                <main>{children}</main>
-          <ExcludedWrapped>
-          <Footer />
-          </ExcludedWrapped>
+          <CartProvider>
+            <ExcludedWrapped>
+              <Nav />
+            </ExcludedWrapped>
+                  <main>{children}</main>
+            <ExcludedWrapped>
+            <Footer />
+            </ExcludedWrapped>
+          </CartProvider>
         </AuthProvider>
 
 

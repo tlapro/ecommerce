@@ -1,5 +1,6 @@
 
 .navContainer {
+    position: relative;
     background-color: #161616;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -16,6 +17,25 @@
     padding: 1rem;
 }
 .navLinksContainer {
+    display: none;
+    position: absolute;
+    font-family: var(--secondary-font);
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: var(--background-color);
+    top: 3.8rem;
+    left: 0;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    gap: 2rem
+}
+.navLinksContainer.open {
+    display: flex;
+}
+/* .navLinksContainer {
     font-family: var(--secondary-font);
     display: flex;
     width: 80%;
@@ -23,7 +43,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-}
+    transition: all 0.3s ease-in-out;
+} */
+
+
 .navLink {
     font-size: 1.2rem;
     transition: 0.2s ease;
@@ -50,69 +73,51 @@
     border-radius: 8px;
     box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
 }
-.navLinksContainer {
-    transition: all 0.3s ease-in-out;
-}
-
-.navOpen {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-    position: absolute;
-    top: 8rem;
-    left: 0;
-    width: 100%;
-    background-color: var(--background-color);
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.navClosed {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-10px);
-    position: absolute;
-    top: 4rem;
-    left: 0;
-    width: 100%;
-    background-color: var(--background-color);
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
 
 .menuButton {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 20; 
+        position: absolute;
+        right: 1rem; 
+        top: 1rem; 
+    }
+    .buttonContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+
+
+.menuCheckbox {
+    display: none;
+}
+
+.menuCheckbox:checked ~ .navLinksContainer {
+    display: flex;
 }
 
 @media (min-width: 768px) {
     .navLinksContainer {
-        visibility: visible;
-        opacity: 1;
-        position: static;
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 1rem;
-        padding: 0;
+        justify-content: flex-end;
+        width: auto;
+        position: static;
         box-shadow: none;
-        transform: translateY(0);
+        padding: 0;
+        gap: 4rem;
     }
 
     .menuButton {
         display: none;
     }
-
     .navLink {
         padding: 10px;
     }

@@ -4,7 +4,7 @@
 "use client";
 import Link from "next/link";
 import style from "./LoginForm.module.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { validateField } from "@/helpers/loginValidate";
 
 
@@ -18,7 +18,10 @@ import { usePublic } from "@/hooks/usePublic";
 import { useAuth } from "@/context/AuthContext";
 
 export const LoginForm = () => {
-    // usePublic();
+    
+    usePublic();
+        
+
     const { login } = useAuth();
     const router = useRouter();
     const loginConfig = formConfig;
@@ -54,7 +57,7 @@ export const LoginForm = () => {
          event.preventDefault();
         try {
             await login(form);
-            const userString = localStorage.getItem("user.name");
+            const userString = localStorage.getItem("user");
             const user = userString ? JSON.parse(userString) : null;
             Toast.fire({icon: 'success',title: `Welcome ${user?.name}!`});
 

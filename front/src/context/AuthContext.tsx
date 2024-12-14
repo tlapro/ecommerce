@@ -42,7 +42,7 @@ export function AuthProvider({ children }: {children : React.ReactNode}) {
             )
         setUser(response.data.user);
         setIsAuthenticated(true);
-            console.log(response.data);
+        console.log(response.data.token)
         localStorage.setItem("user", JSON.stringify(response.data.user));
         router.push("/home");
     }

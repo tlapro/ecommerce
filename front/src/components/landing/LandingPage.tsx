@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Home() {
-
+  const { isAuthenticated } = useAuth();
   const [animationFinished, setAnimationFinished] = useState(false);
   
   useEffect(() => {
@@ -40,7 +41,7 @@ export default function Home() {
       >
         Here you will find the best Apple products in the world.
       </p>
-      <Link href="/home">
+      <Link href={isAuthenticated ? "/home" : "/auth/login"}>
       <p
         className="px-8 py-4 rounded-lg text-lg font-semibold transition-transform transform hover:scale-105 shadow-md hover:shadow-xl"
         style={{

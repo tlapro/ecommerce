@@ -14,7 +14,6 @@ const RenderHome = ({ fetchData } : { fetchData: IProduct[] }) => {
             <div className={style.cardsContainer}>
                 {fetchData.map(({id, name, price, description, image, stock}) => {
                     return (
-
                     <Card 
                     key={id}
                     name={name} 

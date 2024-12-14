@@ -1,31 +1,47 @@
 
+.buttonContainer {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 10%;
 
+}
 .navButton {
     margin: 10px 10px 0px 0px;
     text-align: center;
     background-color: var(--primary-color);
     padding: 8px;
-    width: 20%;
+    width: 100%;
     border-radius: 8px;
     box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
+    transition: 0.5s ease;
+}
+.navButton:hover {
+    background-color: var(--hover-primary);
 }
 .navButtonOut {
     margin: 10px 10px 0px 0px;
+    text-align: center;
     background-color: var(--secondary-color);
     padding: 8px;
-    width: 20%;
+    width: 100%;
     border-radius: 8px;
     box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
+    transition: 0.5s ease;
+}
+.navButtonOut:hover {
+    background-color: var(--hover-secondary);
 }
 
 @media (min-width: 768px) {
-    .navButtonOut {
-        margin-bottom: 10px;
+    .buttonContainer {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        margin-bottom: 2.8rem;
     }
-    .menuButton {
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
+
+
 }
