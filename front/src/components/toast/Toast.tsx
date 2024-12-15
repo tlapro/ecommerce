@@ -6,9 +6,9 @@ export const Toast = Swal.mixin({
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
-    background: 'var(--primary-color)', 
-    color: 'var(--secondary-color)', 
-    iconColor: 'var(--secondary-color)',  
+    background: 'var(--background-color)',
+    color: 'var(--third-color)',
+    iconColor: 'var(--hover-link)',  
     customClass: {
         popup: 'animated-toast', 
     },

@@ -11,7 +11,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        primary: "#B58863",
+        titleColor: "var(--title-color)",
+        primary: "var(--text-color)",
         secondary: "#10232A",
         bgcolor: "#161616",
         hoverPrimary: "#c49976",

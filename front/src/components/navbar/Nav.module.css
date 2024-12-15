@@ -19,13 +19,14 @@
 .navLinksContainer {
     display: none;
     position: absolute;
+    flex-direction: column;
     font-family: var(--secondary-font);
     justify-content: center;
     text-align: center;
     align-items: center;
     width: 100%;
     background-color: var(--bg-navcolor);
-    top: 3.8rem;
+    top: 4.8rem;
     left: 0;
     padding: 1rem 0;
     box-shadow: 0 2px 5px var(--shadow-color);
@@ -34,6 +35,7 @@
 }
 .navLinksContainer.open {
     display: flex;
+    
 }
 
 .navLink {
@@ -59,24 +61,19 @@
         position: absolute;
         right: 1rem; 
         top: 1rem; 
-    }
-    .buttonContainer {
+}
+.buttonContainer {
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-    
-
-
+}
 .menuCheckbox {
     display: none;
 }
-
 .menuCheckbox:checked ~ .navLinksContainer {
     display: flex;
 }
-
 @media (min-width: 768px) {
     .navLinksContainer {
         display: flex;

@@ -34,7 +34,7 @@ export const Carrousel = ({ id } : { id: number }) => {
             }
         };
 
-        handleResize(); // Inicializa según el tamaño actual
+        handleResize();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);

@@ -1,10 +1,11 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 
-// Crear el contexto
+
 const ThemeContext = createContext({
-    theme: "light", // Valor predeterminado
-    toggleTheme: () => {}, // Función vacía predeterminada
+    theme: "light", 
+    toggleTheme: () => {}, 
+    darkMode: false,
 });
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {

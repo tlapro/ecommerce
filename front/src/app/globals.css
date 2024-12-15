@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Spectral+SC:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
-/* Variables para temas */
+
 :root {
-  /* Tema oscuro (por defecto) */
   --primary-font: "Newsreader", serif;
   --secondary-font: "Spectral SC", serif;
   --base-font-weight: 400;
   --base-font-style: normal;
   --optical-sizing: auto;
   --text-color: #ffffff;
+  --title-color: #B58863;
   --primary-color: #B58863;
   --hover-primary: #c49976;
   --secondary-color: #0f2229;
@@ -19,7 +19,7 @@
   --hover-card: #0b1418;
   --third-color: #A79E9C;
   --button-color: #1e3a43;
-  --button-hover: #1e4350;
+  --button-hover: #295b6d;
   --hover-link: #B58863;
   --background-color: #161616;
   --bg-navcolor: #161616;
@@ -29,11 +29,11 @@
   --foreground: white;
 }
 
-/* Tema claro */
 .light {
   --primary-font: "Newsreader", serif;
   --secondary-font: "Spectral SC", serif;
   --text-color: #000000;
+  --title-color: #030303;
   --primary-color: #ffffff; 
   --hover-primary: #4ddbff; 
   --secondary-color: #6bcdee; 
@@ -87,10 +87,9 @@ input:focus {
 }
 
 .bg-animated-gradient {
-  background: linear-gradient(
-    -45deg,
+  background: linear-gradient(-45deg, 
     var(--background-color),
-    var(--primary-color),
+    var(--hover-link),
     var(--background-color),
     var(--background-color)
   );
@@ -98,25 +97,11 @@ input:focus {
   animation: gradient 20s ease infinite;
 }
 
-.toast {
-  background-color: var(--background-color);
-  color: var(--third-color);
-  font-family: "Arial", sans-serif;
-  border-left: 5px solid var(--primary-color); /* Barra de color primario a la izquierda */
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
   }
-  25% {
-    background-position: 100% 50%;
-  }
   50% {
-    background-position: 50% 0%;
-  }
-  75% {
     background-position: 100% 50%;
   }
   100% {
@@ -124,26 +109,15 @@ input:focus {
   }
 }
 
-
-.animated-toast {
-    border-radius: 10px; 
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); 
-    animation: fadeIn 0.3s ease-in-out; 
-}
-
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.toast-container {
-    margin-top: 20px; 
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideIn {
@@ -164,6 +138,7 @@ input:focus {
 .animate-slide-in {
   animation: slideIn 1s ease-in-out;
 }
+
 
 body {
   margin: 0;

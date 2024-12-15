@@ -16,7 +16,7 @@ export const CartPage = () => {
 
     useEffect (() => {
         if (items && items.length > 0) {
-            const total = items.reduce((acc: number, curr: number) => acc + curr.price, 0);
+            const total = items.reduce((acc: number, curr: IProduct) => acc + curr.price, 0);
             setTotalValue(total);
         } else {
             Toast.fire({icon: 'error',title: "Your cart is empty"});

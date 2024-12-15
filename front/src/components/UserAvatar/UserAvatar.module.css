@@ -1,17 +1,18 @@
 
 .buttonContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-around;
+    display: flex;
     margin-bottom: 10px;
 }
 .navButton {
+    display: flex;
+    justify-content: center;
     color: var(--text-color);
     margin: 10px 10px 0px 0px;
     text-align: center;
     background-color: var(--primary-color);
     padding: 8px;
-    width: 100%;
+    width: 30%;
+    margin-left: 50px;
     border-radius: 8px;
     box-shadow: 0px 0px 20px 1px rgb(0, 0, 0);
     transition: 0.5s ease;
@@ -20,14 +21,18 @@
     background-color: var(--hover-primary);
 }
 .navButtonOut {
+    display: flex;
+    justify-content: center;
+    color: var(--text-color);
     margin: 10px 10px 0px 0px;
     text-align: center;
     background-color: var(--secondary-color);
     padding: 8px;
-    width: 100%;
+    width: 30%;
+    margin-left: 50px;
     border-radius: 8px;
-    box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
-    transition: 0.5s ease;
+    box-shadow: 0px 0px 20px 1px rgb(0, 0, 0);
+    transition: 0.3s ease;
 }
 .navButtonOut:hover {
     background-color: var(--hover-secondary);
