@@ -4,10 +4,8 @@
 "use client";
 import Link from "next/link";
 import style from "./LoginForm.module.css"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { validateField } from "@/helpers/loginValidate";
-
-
 import formConfig from "@/config/LoginConfig";
 import LoginInput from "./LoginInput";
 import { Toast } from "../toast/Toast";

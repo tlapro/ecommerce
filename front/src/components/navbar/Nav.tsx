@@ -11,7 +11,7 @@ const Nav = () => {
     <nav className={styles.navContainer}>
         
         <div className={styles.logoContainer}>
-            <h1 className="cursor-pointer">My Apple Store</h1>
+            <h1 className="cursor-pointer">Apple Store</h1>
         </div>
 
         <input type="checkbox" id="menuToggle" className={styles.menuCheckbox} />
@@ -26,7 +26,7 @@ const Nav = () => {
             const Icon = navLink.icon; 
             return (
                 <Link key={navLink.path} className={styles.navLink} href={navLink.path}>
-                    <Icon />
+                    <Icon size={25}/>
                 </Link>
             );
         })}

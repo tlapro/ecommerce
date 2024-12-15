@@ -1,11 +1,11 @@
  
   .footer {
     margin-top: 200px;
-    background-color: var(--background-color);
-    color: var(--secondary-color);
+    background-color: var(--bg-navcolor);
+    color: var(--primary-color);
     padding: 3rem 1rem;
     font-family: var(--primary-font);
-    box-shadow: 0px -80px 100px 5px rgb(0, 0, 0);
+    box-shadow: 0px -80px 100px 5px var(--shadow-color);
   }
   
   .container {
@@ -24,7 +24,6 @@
   }
   
   .heading {
-    color: var(--primary-color);
     font-size: 1.5rem;
     font-family: var(--secondary-font);
     margin-bottom: 1rem;
@@ -42,7 +41,6 @@
   
   .text {
     text-align: justify;
-    color: white;
     font-size: 0.95rem;
     line-height: 1.6;
     width: 80%;
@@ -55,7 +53,6 @@
   }
   
   .link {
-    color: white;
     text-decoration: none;
     font-size: 1rem;
     display: block;
@@ -64,7 +61,7 @@
   }
   
   .link:hover {
-    color: var(--primary-color);
+    color: var(--hover-link);
     transform: translateX(5px);
   }
   

@@ -97,7 +97,7 @@ export const RegisterForm = () => {
                         })}
 
                     <button className={style.registerButton} type="submit">Register</button>
-                    <Link className={style.registerLink} href="/auth/login">
+                    <Link className={style.loginLink} href="/auth/login">
                         Already have an account? Login here
                     </Link>
                     </form>

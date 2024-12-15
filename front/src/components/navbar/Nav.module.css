@@ -1,10 +1,10 @@
 
 .navContainer {
     position: relative;
-    background-color: #161616;
+    background-color: var(--bg-navcolor);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    box-shadow: 0px 1px 100px 5px rgb(0, 0, 0);
+    box-shadow: 0px 1px 100px 5px var(--shadow-color);
 }
 .logoContainer {
     font-family: var(--primary-font);
@@ -20,58 +20,33 @@
     display: none;
     position: absolute;
     font-family: var(--secondary-font);
+    justify-content: center;
     text-align: center;
-    flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: var(--background-color);
+    background-color: var(--bg-navcolor);
     top: 3.8rem;
     left: 0;
     padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px var(--shadow-color);
     z-index: 10;
     gap: 2rem
 }
 .navLinksContainer.open {
     display: flex;
 }
-/* .navLinksContainer {
-    font-family: var(--secondary-font);
-    display: flex;
-    width: 80%;
-    justify-self: flex-end;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    transition: all 0.3s ease-in-out;
-} */
-
 
 .navLink {
+    color: var(--primary-color);
     font-size: 1.2rem;
-    transition: 0.2s ease;
+    transition: 0.5s ease;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 1));
 }
 
 .navLink:hover {
-    color: var(--primary-color);
-}
-
-.navButton {
-    margin: 10px 10px 0px 0px;
-    text-align: center;
-    background-color: var(--primary-color);
-    padding: 8px;
-    width: 20%;
-    border-radius: 8px;
-    box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
-}
-.navButtonOut {
-    margin: 10px 10px 0px 0px;
-    background-color: var(--secondary-color);
-    padding: 8px;
-    width: 20%;
-    border-radius: 8px;
-    box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
+    color: var(--hover-primary);
+    transform: translate(0px, -2px);
+    border-radius: 100px;
 }
 
 .menuButton {

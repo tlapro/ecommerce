@@ -8,7 +8,7 @@
     background-color: var(--background-color);
 }
 
-.card { 
+.card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,20 +18,21 @@
     margin: 0px 0px 40px 0px;
     background-color: var(--background-color);
     border-radius: 10px;
-    box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     padding: 20px;
     transition: 0.5s ease;
-
+    color: var(--text-color);
+    font-family: var(--secondary-font);
 }
 .card:hover {
-    background-color: #09151a;
+    background-color: var(--hover-card);
 }
 .buttonDetail {
     font-family: var(--primary-font);
     width: 100%;
     height: 50px;
-    background-color: var(--secondary-color);
+    background-color: var(--button-color);
     color: white;
     border: none;
     border-radius: 10px;
@@ -41,7 +42,7 @@
     margin-top: 10px;
 }
 .buttonDetail:hover {
-    background-color: #1e4350;
+    background-color: var(--button-hover);
 }
 .imgContainer {
     min-height: 250px;
@@ -56,7 +57,7 @@
 }
 .imgProduct {
     width: 60%;
-    margin: 0 auto;
+    margin: 0 auto; 
     height: auto;
     border-radius: 10px;
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 1));

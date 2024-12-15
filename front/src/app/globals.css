@@ -3,53 +3,109 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Spectral+SC:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+/* Variables para temas */
 :root {
-    --primary-font: "Newsreader", serif;
-    --secondary-font: "Spectral SC", serif;
-    --base-font-weight: 400;
-    --base-font-style: normal;
-    --optical-sizing: auto;
-    --primary-color: #B58863;
-    --hover-primary: #c49976;
-    --secondary-color: #10232A;
-    --hover-secondary: #1e3a43;
-    --third-color: #A79E9C;
-    --background-color: #161616;
-  }
+  /* Tema oscuro (por defecto) */
+  --primary-font: "Newsreader", serif;
+  --secondary-font: "Spectral SC", serif;
+  --base-font-weight: 400;
+  --base-font-style: normal;
+  --optical-sizing: auto;
+  --text-color: #ffffff;
+  --primary-color: #B58863;
+  --hover-primary: #c49976;
+  --secondary-color: #0f2229;
+  --hover-secondary: #1e3a43;
+  --hover-card: #0b1418;
+  --third-color: #A79E9C;
+  --button-color: #1e3a43;
+  --button-hover: #1e4350;
+  --hover-link: #B58863;
+  --background-color: #161616;
+  --bg-navcolor: #161616;
+  --shadow-color: rgba(0, 0, 0, 1);
+  --input-bg: black;
+  --input-placeholder-color: var(--third-color);
+  --foreground: white;
+}
+
+/* Tema claro */
+.light {
+  --primary-font: "Newsreader", serif;
+  --secondary-font: "Spectral SC", serif;
+  --text-color: #000000;
+  --primary-color: #ffffff; 
+  --hover-primary: #4ddbff; 
+  --secondary-color: #6bcdee; 
+  --hover-secondary: #90ebff;
+  --hover-card: #e0f9ff;
+  --third-color: #030303;
+  --button-color: #000000;
+  --button-hover: #132c35;
+  --hover-link: #61a6b6;
+  --background-color: #ffffff;
+  --bg-navcolor: #000000;
+  --shadow-color: rgba(255, 255, 255, 1);
+  --input-bg: #f9f9f9;
+  --input-placeholder-color: #888888; 
+  --foreground: #000000; 
+}
+
+body {
+  margin: 0;
+  font-family: var(--primary-font);
+  background-color: var(--background-color);
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
 input {
   font-size: 1.4rem;
   width: 100%;
-  background-color: black;
-  box-shadow: 0px 0px 10px 1px rgb(0, 0, 0);
+  background-color: var(--input-bg);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
   padding: 10px;
   border-radius: 10px;
   text-align: center;
   margin-top: 5px;
+  margin-bottom: 5px;
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+label {
+  font-size: 1.3rem;
+  margin-top: 10px;
+}
+
+input::placeholder {
+  color: var(--input-placeholder-color);
+}
+
 input:focus {
   outline: none;
 }
-input::placeholder {
-  color: var(--third-color);
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+
 .bg-animated-gradient {
-  background: linear-gradient(-45deg, 
-  #161616, 
-  #977253, 
-  #161616, 
-  #161616  
+  background: linear-gradient(
+    -45deg,
+    var(--background-color),
+    var(--primary-color),
+    var(--background-color),
+    var(--background-color)
   );
   background-size: 400% 400%;
   animation: gradient 20s ease infinite;
 }
 
-/* Animación para el gradiente */
+.toast {
+  background-color: var(--background-color);
+  color: var(--third-color);
+  font-family: "Arial", sans-serif;
+  border-left: 5px solid var(--primary-color); /* Barra de color primario a la izquierda */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -70,9 +126,9 @@ input::placeholder {
 
 
 .animated-toast {
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Sombra sutil para darle profundidad */
-    animation: fadeIn 0.3s ease-in-out; /* Animación suave */
+    border-radius: 10px; 
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); 
+    animation: fadeIn 0.3s ease-in-out; 
 }
 
 @keyframes fadeIn {
@@ -87,16 +143,8 @@ input::placeholder {
 }
 
 .toast-container {
-    margin-top: 20px; /* Espacio superior para que no quede pegado al borde */
+    margin-top: 20px; 
 }
-
-.toast {
-    background-color: var(--background-color);
-    color: var(--third-color);
-    font-family: 'Arial', sans-serif;
-    border-left: 5px solid var(--primary-color); /* Barra de color primario a la izquierda */
-}
-
 
 @keyframes slideIn {
   0% {

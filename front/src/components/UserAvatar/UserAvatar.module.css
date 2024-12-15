@@ -1,19 +1,19 @@
 
 .buttonContainer {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 10%;
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+    margin-bottom: 10px;
 }
 .navButton {
+    color: var(--text-color);
     margin: 10px 10px 0px 0px;
     text-align: center;
     background-color: var(--primary-color);
     padding: 8px;
     width: 100%;
     border-radius: 8px;
-    box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
+    box-shadow: 0px 0px 20px 1px rgb(0, 0, 0);
     transition: 0.5s ease;
 }
 .navButton:hover {
@@ -32,7 +32,15 @@
 .navButtonOut:hover {
     background-color: var(--hover-secondary);
 }
-
+.themeButton {
+    margin: 10px 10px 0px 15px;
+    color: var(--primary-color);
+    transition: 0.5s ease;
+}
+.themeButton:hover {
+    color: var(--hover-primary);
+    transform: translate(0px, -2px);
+}
 @media (min-width: 768px) {
     .buttonContainer {
         display: flex;
@@ -40,7 +48,6 @@
         justify-content: center;
         align-items: center;
         width: 20%;
-        margin-bottom: 2.8rem;
     }
 
 
