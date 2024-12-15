@@ -23,12 +23,13 @@ const Nav = () => {
             className={`${styles.navLinksContainer}`}
         >
             {navConfig.map((navLink: NavItem) => {
-                return (
-                    <Link key={navLink.path} className={styles.navLink} href={navLink.path}>
-                        {navLink.text}
-                    </Link>
-                );
-            })}
+            const Icon = navLink.icon; 
+            return (
+                <Link key={navLink.path} className={styles.navLink} href={navLink.path}>
+                    <Icon />
+                </Link>
+            );
+        })}
 
             <UserAvatar />
           
