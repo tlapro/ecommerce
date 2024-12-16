@@ -12,10 +12,10 @@ export default function Details ({id, name, price, description, image, stock, ca
 
     const product = {id, name, price, description, image, stock, categoryId};
     const handleOnClick = () => {
-        if (!isAuthenticated) {
-            Toast.fire({icon: 'error',title: "You must be logged in to add products to your cart"});
-            return;
-        }
+        // if (!isAuthenticated) {
+        //     Toast.fire({icon: 'error',title: "You must be logged in to add products to your cart"});
+        //     return;
+        // }
         const wasAdded = addToCart(product);
         if (wasAdded) {
             Toast.fire({icon: 'success', title: `${name} added to cart`});

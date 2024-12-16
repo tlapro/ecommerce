@@ -8,6 +8,7 @@ export default function Home() {
   const { isAuthenticated } = useAuth();
   const [animationFinished, setAnimationFinished] = useState(false);
 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnimationFinished(true);

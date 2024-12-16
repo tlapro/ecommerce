@@ -6,11 +6,12 @@ export interface NavItem {
     text: string;
     path: string;
     icon: IconType;
+    isPrivate: boolean;
 }
 
 export const navConfig: NavItem[] = [
-    { text: "Home", path: "/home", icon: AiFillHome },
-    { text: "About", path: "/landing", icon: AiOutlineInfoCircle},
-    { text: "Cart", path: "/cart", icon: AiOutlineShoppingCart},
-    { text: "Profile", path: "/dashboard", icon: AiOutlineUser },
+    { text: "Home", path: "/home", icon: AiFillHome, isPrivate: false },
+    { text: "About", path: "/landing", icon: AiOutlineInfoCircle, isPrivate: false},
+    { text: "Cart", path: "/cart", icon: AiOutlineShoppingCart, isPrivate: false},
+    { text: "Profile", path: "/dashboard", icon: AiOutlineUser, isPrivate: true },
 ]

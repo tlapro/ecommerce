@@ -17,8 +17,7 @@ import { useAuth } from "@/context/AuthContext";
 
 export const LoginForm = () => {
     
-    usePublic();
-        
+    usePublic();        
 
     const { login } = useAuth();
     const router = useRouter();

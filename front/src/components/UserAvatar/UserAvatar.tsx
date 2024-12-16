@@ -6,9 +6,10 @@
     import { MdLightMode } from "react-icons/md";
     import { MdOutlineDarkMode } from "react-icons/md";
     import { BiLogOut, BiLogIn } from "react-icons/bi";
+    
     export default function UserAvatar() {
         const { user, isAuthenticated, logout } = useAuth();
-        const { darkMode, toggleTheme } = useThemeContext();
+        const { theme, toggleTheme } = useThemeContext();
 
         return isAuthenticated ? (
 
@@ -20,7 +21,7 @@
         <button> <BiLogOut size={25}/> </button>
         </Link>  
         <button onClick={toggleTheme} className={style.themeButton}>
-                {darkMode ? <MdLightMode size={25}/> : <MdOutlineDarkMode size={25}/>}
+                {theme === "dark" ? <MdLightMode size={25}/> : <MdOutlineDarkMode size={25}/>}
             </button>
         </div>) :
 
@@ -31,7 +32,7 @@
             <button ><BiLogIn size={25}/> </button>
         </Link>
         <button onClick={toggleTheme} className={style.themeButton}>
-                {darkMode ? <MdLightMode size={25}/> : <MdOutlineDarkMode size={25}/>}
+                {theme === "dark" ? <MdLightMode size={25}/> : <MdOutlineDarkMode size={25}/>}
             </button>
         </div>
         

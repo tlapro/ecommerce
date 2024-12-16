@@ -1,18 +1,19 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { IProduct } from "@/interfaces/IProduct";
 import { createContext, useContext, useEffect, useState } from "react";
 
 interface CartContextType {
-    items: IProduct | null;
+    items: IProduct[] | null;
     addToCart: (item: IProduct) => boolean;
-    removeFromCart: (item: IProduct) => void;
+    removeFromCart: (id: number) => void;
     clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextType>({
     items: null,
     addToCart: (item: IProduct) => false,
-    removeFromCart: (item: IProduct) => {},
+    removeFromCart: (id: number) => {},
     clearCart: () => {},
 })
 
@@ -42,16 +43,18 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         });
         return wasAdded;
     };
-    const clearCart = () => {
-        localStorage.removeItem("cart");
-        setItems([]);
-    };
-    const removeFromCart = (item: IProduct) => {
+
+    const removeFromCart = (id: number) => {
         setItems((prevItems) => {
-            const updatedItems = prevItems.filter((product) => product.id !== item.id);
+            const updatedItems = prevItems.filter((product) => product.id !== id);
             localStorage.setItem("cart", JSON.stringify(updatedItems));
             return updatedItems;
         });
+    };
+
+    const clearCart = () => {
+        localStorage.removeItem("cart");
+        setItems([]);
     };
 
 return (
