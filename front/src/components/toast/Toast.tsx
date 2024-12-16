@@ -10,7 +10,7 @@ export const Toast = Swal.mixin({
     color: 'var(--third-color)',
     iconColor: 'var(--hover-link)',  
     customClass: {
-        popup: 'animated-toast', 
+        popup: ' animate-fade-in animate-slide-in',
     },
     didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer); 

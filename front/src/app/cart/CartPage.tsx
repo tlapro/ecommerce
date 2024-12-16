@@ -12,7 +12,7 @@ import { IoTrashOutline } from "react-icons/io5";
 import { useAuth } from "@/context/AuthContext";
 
 export const CartPage = () => {
-    const { items, clearCart, removeFromCart } = useCart();
+    const { items, clearCart, removeFromCart, postOrder } = useCart();
     const [totalValue, setTotalValue] = useState(0);
     const { user } = useAuth()
     const router = useRouter();
@@ -21,16 +21,16 @@ export const CartPage = () => {
         if (items && items.length > 0) {
             const total = items.reduce((acc: number, curr: IProduct) => acc + curr.price, 0);
             setTotalValue(total);
-        } else {
-            Toast.fire({icon: 'error',title: "Your cart is empty"});
-            router.push("/home");
         }
     }, [items]);
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
       if (!user) {
         Toast.fire({icon: 'error',title: "You must be logged to sumbit an order" });
         router.replace("/auth/login");
+      } else {
+        await postOrder();
+        router.replace("/dashboard")
       }
     }
 

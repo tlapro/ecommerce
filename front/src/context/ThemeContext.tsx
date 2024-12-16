@@ -1,21 +1,34 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 
+interface ThemeContextType {
+    theme: string;
+    setTheme: (theme: string) => void;
+    toggleTheme: () => void;
+    isLoading: boolean;
+}
 
-const ThemeContext = createContext({
+const ThemeContext = createContext<ThemeContextType>({
     theme: "light", 
+    setTheme: () => {},
     toggleTheme: () => {}, 
+    isLoading: true,
 });
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-    const [theme, setTheme] = useState<string | null>("light");
-
+    const [theme, setTheme] = useState<string>("light");
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme") || "light";
         setTheme(savedTheme);
-        document.body.classList.add(savedTheme);
+        setIsLoading(false);
     }, []);
+    useEffect(() => {
+        if (!isLoading) {
+            document.body.classList.add(theme);
+        }
+    }, [isLoading, theme]);
 
     const toggleTheme = () => {
         const newTheme = theme === "light" ? "dark" : "light";
@@ -26,7 +39,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme}}>
+        <ThemeContext.Provider value={{ theme, setTheme, toggleTheme, isLoading}}>
             {children}
         </ThemeContext.Provider>
     );

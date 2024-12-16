@@ -1,3 +1,94 @@
-.textColor {
+ 
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    background-color: var(--background-color);
     color: var(--text-color);
+    padding: 2rem;
+    gap: 2rem;
+    cursor: default;
+  }
+  
+  .containerDashboard {
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    color: var(--title-color);
+  }
+  
+  .titleSmall {
+    font-size: 1.8rem;
+    color: var(--title-color);
+    margin-bottom: 1rem;
+  }
+  
+  .welcome {
+    font-size: 1.2rem;
+    color: var(--text-color);
+  }
+  
+  .containerUser, .containerOrders {
+    width: 100%;
+    max-width: 800px;
+    background: var(--background-color);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+  
+  .userInfo {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  .line {
+    width: 80%;
+    border: none;
+    border-top: 1px solid var(--hover-primary);
+    margin: 1rem auto;
+  }
+  
+  .orderCard {
+    background: var(--background-color);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .orderId {
+    font-size: 1.2rem;
+    color: var(--title-color);
+  }
+  
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+  }
+  
+  .productCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--bg-color-hover);
+    max-width: 20vh;
+    padding: 0.8rem;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  
+  .image {
+    margin: 0 auto;
 }
+  
+  .productCard:hover {
+    transform: scale(1.05);
+  }
+  

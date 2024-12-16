@@ -1,7 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
+import { Toast } from "@/components/toast/Toast";
 import { ILogin } from "@/interfaces/ILogin";
+import { IOrder } from "@/interfaces/IOrder";
+import { IProduct } from "@/interfaces/IProduct";
 import { IUser } from "@/interfaces/IUser";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -14,6 +18,7 @@ interface AuthContextType {
     login: (form: ILogin) => void;
     logout: () => void;
     token: string | null;
+    getOrders: () => [];
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -23,6 +28,7 @@ const AuthContext = createContext<AuthContextType>({
     login: (form: ILogin) => {},
     logout: () => {},
     token: null,
+    getOrders: () => [],
 });
 
 export function AuthProvider({ children }: {children : React.ReactNode}) {
@@ -30,49 +36,76 @@ export function AuthProvider({ children }: {children : React.ReactNode}) {
     const [token, setToken] = useState<string | null>(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [orders, setOrders] = useState<IOrder[]>([]);
 
     const router = useRouter();
     
     useEffect(() => {
-        const user = localStorage.getItem("user");
-        const token = localStorage.getItem("token")
-        if (user && token) {
-            setUser(JSON.parse(user));
-            setToken(JSON.parse(token))            
+        const storedUser = localStorage.getItem("user");
+        const storedToken = localStorage.getItem("token");
+    
+        if (storedUser && storedToken) {
+            setUser(JSON.parse(storedUser));
+            setToken(storedToken); 
             setIsAuthenticated(true);
         } else {
             setUser(null);
-            setToken(null) 
+            setToken(null);
             setIsAuthenticated(false);
-            setIsLoading(false);
         }
+        setIsLoading(false);
     }, []);
     
+    
     const login = async (form: ILogin) => {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/users/login`,
-             form
-            )
-        setUser(response.data.user);
-        setToken(response.data.token);
-        localStorage.setItem("user", JSON.stringify(response.data.user));
-        localStorage.setItem("token", JSON.stringify(response.data.token));
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, form);
+    
+        const { user, token } = response.data;
+        setUser(user);
+        setToken(token);
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", token); 
         setIsAuthenticated(true);
         router.push("/home");
-    }
+    };
+    
 
     const logout = async () => {
         setUser(null);
         setIsAuthenticated(false);
         localStorage.removeItem("user");
         localStorage.removeItem("token")
-        localStorage.removeItem("cart");
         router.push("/auth/login");
     }
 
+    const getOrders = async (): Promise<IOrder[] | undefined> => {
+        const token = localStorage.getItem("token");
+    
+        try {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users/orders`, {
+                headers: {
+                    Authorization: `${token}`,
+                },
+            });
+    
+            return response.data;
+        } catch (error: any) {
+            Toast.fire({
+                icon: "error",
+                title: error.response.data.message,
+            });
+        }
+    
+    
+    };
+    
+    
+    
+    
 
     return (
     <AuthContext.Provider 
-    value={{user, login, logout, isAuthenticated, token, isLoading}}>
+    value={{user, login, logout, isAuthenticated, token, isLoading, getOrders}}>
         {children}
         </AuthContext.Provider>
     )

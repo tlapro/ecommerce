@@ -6,18 +6,24 @@
     import { MdLightMode } from "react-icons/md";
     import { MdOutlineDarkMode } from "react-icons/md";
     import { BiLogOut, BiLogIn } from "react-icons/bi";
+import { useCart } from "@/context/CartContext";
     
     export default function UserAvatar() {
         const { user, isAuthenticated, logout } = useAuth();
+        const { clearCart } = useCart();
         const { theme, toggleTheme } = useThemeContext();
-
+        
+        const handleLogout = () => {
+            logout();
+            clearCart();
+        }
         return isAuthenticated ? (
 
 
         <div className={style.buttonContainer}>
             <h1 className="text-center mt-3">{user?.name}</h1>
         <Link onClick={() => {
-            logout()}} href="/" className={`text-center ${style.navButtonOut}`}>
+            handleLogout()}} href="/" className={`text-center ${style.navButtonOut}`}>
         <button> <BiLogOut size={25}/> </button>
         </Link>  
         <button onClick={toggleTheme} className={style.themeButton}>

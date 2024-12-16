@@ -4,9 +4,6 @@ import { navConfig, NavItem } from "@/config/navConfig";
 import UserAvatar from "../UserAvatar/UserAvatar";
 import Private from "../private/Private";
 
-
-
-
 const Nav = () => {
 
     return (
