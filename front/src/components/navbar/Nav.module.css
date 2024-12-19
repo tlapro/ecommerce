@@ -2,14 +2,12 @@
 .navContainer {
     position: fixed;
     top: 0; 
-    left: 0;
-    width: 100%; 
+    width: 100%;
     background-color: var(--bg-navcolor);
     display: grid;
     grid-template-columns: 1fr 1fr;
     box-shadow: 0px 1px 100px 5px var(--shadow-color);
     z-index: 100; 
-
 }
 .logoContainer {
     font-family: var(--primary-font);
@@ -42,7 +40,6 @@
     display: flex;
     
 }
-
 .navLink {
     color: var(--primary-color);
     font-size: 1.2rem;

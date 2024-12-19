@@ -22,7 +22,7 @@
   --button-hover: #295b6d;
   --hover-link: #B58863;
   --background-color: #161616;
-  --bg-color-hover: #161718;
+  --bg-color-hover: #161718 !;
   --bg-navcolor: #242323;
   --shadow-color: rgba(0, 0, 0, 1);
   --input-bg: black;
@@ -43,7 +43,7 @@
   --third-color: #030303;
   --button-color: #000000;
   --button-hover: #132c35;
-  --hover-link: #61a6b6;
+  --hover-link: #61a6b6; 
   --background-color: #ffffff;
   --bg-color-hover: #ddf7ff;
   --bg-navcolor: #000000;
@@ -54,6 +54,7 @@
 }
 
 body {
+  width: 99vw;
   margin: 0;
   font-family: var(--primary-font);
   font-style: var(--base-font-style);

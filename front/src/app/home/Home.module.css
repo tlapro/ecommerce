@@ -1,6 +1,6 @@
 .cardsContainer {
     display: grid;
-    width: 50%;
+    width: 60vw;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
@@ -19,4 +19,21 @@
     width: 100%;
     color: var(--third-color);
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+@media (min-width: 1024px) and (max-width: 1440px) {
+    .cardsContainer {
+        width: 80%;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .cardsContainer {
+        grid-template-columns: 1fr 1fr;
+        width: 90%;
+    }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+    .cardsContainer {
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
 }

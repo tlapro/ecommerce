@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     position: relative;
-    width: 100%;
+    width: 75vw;
     margin: 0 auto;
 }
 
@@ -47,9 +47,11 @@
     cursor: pointer;
     transition: transform 0.5s ease;
 }
+
 .navButton:hover {
     background-color: var(--secondary-color);
 }
+
 .navButton:disabled {
     background-color: var(--disabled-color);
 }
@@ -58,3 +60,46 @@
     transform: scale(1.1);
 }
 
+/* Media queries */
+@media (min-width: 0px) and (max-width: 768px) {
+    .carrouselContainerWrapper {
+        flex-direction: column;
+    }
+
+    .navButton {
+        margin: 0.5rem auto;
+        display: block;
+    }
+
+    .carrouselContainer {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .carrouselItem {
+        min-width: 90%; 
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1440px) {
+    .carrouselContainerWrapper {
+        flex-direction: row;
+    }
+
+    .navButton {
+        margin: 0.5rem;
+        display: block;
+    }
+
+    .carrouselContainer {
+        width: 90%;
+        justify-content: flex-start;
+    }
+
+    .carrouselItem {
+        min-width: 47%;
+        max-width: 47%;
+
+    }
+}

@@ -5,7 +5,6 @@
 import { Toast } from "@/components/toast/Toast";
 import { ILogin } from "@/interfaces/ILogin";
 import { IOrder } from "@/interfaces/IOrder";
-import { IProduct } from "@/interfaces/IProduct";
 import { IUser } from "@/interfaces/IUser";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -18,7 +17,7 @@ interface AuthContextType {
     login: (form: ILogin) => void;
     logout: () => void;
     token: string | null;
-    getOrders: () => [];
+    getOrders: () => Promise<IOrder[]>;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -28,7 +27,7 @@ const AuthContext = createContext<AuthContextType>({
     login: (form: ILogin) => {},
     logout: () => {},
     token: null,
-    getOrders: () => [],
+    getOrders: async () => [],
 });
 
 export function AuthProvider({ children }: {children : React.ReactNode}) {
@@ -87,14 +86,18 @@ export function AuthProvider({ children }: {children : React.ReactNode}) {
                     Authorization: `${token}`,
                 },
             });
-    
-            return response.data;
+            const orders: IOrder[] = response.data;
+            if (orders.length === 0) {
+                Toast.fire({icon: 'error', title: "You have no orders"});
+            }
+            return orders;
         } catch (error: any) {
-            Toast.fire({
-                icon: "error",
-                title: error.response.data.message,
-            });
+            if (error.response.data.message === "Invalid token") {
+            Toast.fire({icon: 'error', title: "You must be logged in to access this page"});
+        } else {
+            Toast.fire({icon: 'error', title: error.response.data.message});
         }
+    }
     
     
     };

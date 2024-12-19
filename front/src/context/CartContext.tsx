@@ -9,18 +9,20 @@ import { Toast } from "@/components/toast/Toast";
 
 interface CartContextType {
     items: IProduct[] | null;
-    addToCart: (item: IProduct) => boolean;
+    addToCart: (item: IProduct) => void;
     removeFromCart: (id: number) => void;
     clearCart: () => void;
-    postOrder: () => Promise<IOrder>;
+    postOrder: () => void;
+    countProduct: (id: number) => number;
 }
 
 const CartContext = createContext<CartContextType>({
     items: null,
-    addToCart: (item: IProduct) => false,
+    addToCart: (item: IProduct) => {},
     removeFromCart: (id: number) => {},
     clearCart: () => {},
-    postOrder: () => Promise.resolve({}),
+    postOrder: () => {},
+    countProduct: (id: number) => 0,
 })
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
@@ -36,19 +38,19 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         }
     }, []);
 
-    const addToCart = (item: IProduct): boolean => {
-        let wasAdded = false;
+    const addToCart = (item: IProduct) => {
         setItems((prevItems) => {
-            const exists = prevItems.some((product) => product.id === item.id);
-            if (exists) {
+            const existingItem = prevItems.find((product) => product.id === item.id);
+            if (existingItem) {
+                Toast.fire({icon: "error", title: `${item.name} is already in your cart`});
                 return prevItems;
             }
             const updatedItems = [...prevItems, item];
             localStorage.setItem("cart", JSON.stringify(updatedItems));
-            wasAdded = true;
+            Toast.fire({icon: "success", title: `${item.name} added to cart`});
             return updatedItems;
         });
-        return wasAdded;
+
     };
 
     const removeFromCart = (id: number) => {
@@ -70,11 +72,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             const token = localStorage.getItem("token");  
     
             const parsedCart = JSON.parse(cart || '[]');
-
-            if (parsedCart.length === 0) {
-                console.log("El carrito está vacío. No se puede realizar el pedido.");
-                return;
-            }
     
             const productIds = parsedCart.map((item: IProduct) => item.id);
     
@@ -88,23 +85,20 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
                 }
             );
             clearCart();
-            Toast.fire({
-                icon: "success",
-                title: "Order created successfully!",
-            });
+            Toast.fire({icon: "success", title: "Order created successfully!"});
         } catch (error) {
-            Toast.fire({
-                icon: "error",
-                title: "An error occurred while processing the order",
-            });
+            Toast.fire({icon: "error", title: "An error occurred while processing the order"});
         }
     };
-    
-    
+
+    const countProduct = (id: number) => {
+        return items.filter((product) => product.id === id).length;  
+    }
+
     
 
 return (
-    <CartContext.Provider value={{ addToCart, items, clearCart, removeFromCart, postOrder }}>
+    <CartContext.Provider value={{ addToCart, items, clearCart, removeFromCart, postOrder, countProduct }}>
         {children}
     </CartContext.Provider>
 )

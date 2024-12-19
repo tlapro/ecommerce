@@ -45,9 +45,9 @@ const Dashboard = () => {
         <h2 className={style.titleSmall}>Your Orders</h2>
         <hr className={style.line} />
         {orders.length > 0 ? (
-          orders.map((order) => (
+          orders.map((order, index) => (
             <div key={order.id}>
-              <p className={style.orderId}>Order ID: {order.id}</p>
+              <p className={style.orderId}>Order ID: {index + 1}</p>
               <div className={style.orderCard}>
               <div>
               <p>Order Date: {new Date(order.date).toLocaleDateString()}</p>

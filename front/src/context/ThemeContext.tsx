@@ -9,7 +9,7 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-    theme: "light", 
+    theme: "dark", 
     setTheme: () => {},
     toggleTheme: () => {}, 
     isLoading: true,
