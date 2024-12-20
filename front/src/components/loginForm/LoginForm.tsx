@@ -42,7 +42,7 @@ export const LoginForm = () => {
             [name]: value,
         }));
          
-        const error = validateField(name, value, form);
+        const error = validateField(name, value);
         setErrors((prevErrors) => ({
            ...prevErrors,
            [name]: error,

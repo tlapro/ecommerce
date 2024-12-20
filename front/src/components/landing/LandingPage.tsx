@@ -17,7 +17,7 @@ export default function Home() {
 
     return (
       <div
-      className={`bg-animated-gradient flex flex-col items-center justify-center min-h-screen text-center px-4 cursor-default transition-all duration-500 ${
+      className={`w-full h-full bg-animated-gradient flex flex-col items-center justify-center min-h-screen text-center px-4 cursor-default transition-all duration-500 ${
         animationFinished ? "" : "overflow-hidden"
         }`}
         >

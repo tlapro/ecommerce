@@ -7,7 +7,7 @@ import { IOrder } from "@/interfaces/IOrder";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const Dashboard = () => {
+export default function Dashboard () {
   const { getOrders } = useAuth(); 
   const { user } = useAuth(); 
   const [orders, setOrders] = useState<IOrder[]>([]);
@@ -22,7 +22,7 @@ const Dashboard = () => {
     };
 
     fetchOrders();
-  }, []);
+  }, [getOrders]);
 
   usePrivate(); 
   return (
@@ -77,4 +77,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+

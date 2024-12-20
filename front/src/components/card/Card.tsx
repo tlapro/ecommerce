@@ -10,7 +10,7 @@ interface CardProps {
         id: number
 }       
 // props es un OBJETO, Y DENTO DEL OBJETO VIENE OTRO OBJETO PRODUCT AL QUE TIPAMOS
-export default function Card({ name, price, description, image, stock, id }: CardProps) {
+export default function Card({ name, price, image, id }: CardProps) {
     
 ;
     return (

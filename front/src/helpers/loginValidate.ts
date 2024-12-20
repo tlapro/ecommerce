@@ -1,6 +1,4 @@
-import { ILogin } from "@/interfaces/ILogin";
-
-export const validateField = (fieldName: string, value: string, form: ILogin) => {
+export const validateField = (fieldName: string, value: string) => {
     let error = "";
     const regexMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

@@ -11,7 +11,7 @@ export interface NavItem {
 
 export const navConfig: NavItem[] = [
     { text: "Home", path: "/home", icon: AiFillHome, isPrivate: false },
-    { text: "About", path: "/landing", icon: AiOutlineInfoCircle, isPrivate: false},
+    { text: "About", path: "/aboutus", icon: AiOutlineInfoCircle, isPrivate: false},
     { text: "Cart", path: "/cart", icon: AiOutlineShoppingCart, isPrivate: false},
     { text: "Profile", path: "/dashboard", icon: AiOutlineUser, isPrivate: true },
 ]

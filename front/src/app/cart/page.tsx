@@ -1,6 +1,6 @@
 import CartPage from "./CartPage";
 
-export const Cart = () => {    
+export default function Cart () {    
 
     return (
         <div>
@@ -8,4 +8,3 @@ export const Cart = () => {
         </div>
     )
 }
-export default Cart;

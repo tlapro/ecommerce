@@ -17,7 +17,7 @@ interface AuthContextType {
     login: (form: ILogin) => void;
     logout: () => void;
     token: string | null;
-    getOrders: () => Promise<IOrder[]>;
+    getOrders: () => Promise<IOrder[] | undefined>;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -115,9 +115,9 @@ export function AuthProvider({ children }: {children : React.ReactNode}) {
 }
 export const useAuth = () => {
     const context = useContext(AuthContext);
-    // if (context === undefined) {
-    //     throw new Error("useAuth must be used within a AuthProvider");
-    // }
+    if (context === undefined) {
+        throw new Error("useAuth must be used within a AuthProvider");
+    }
 
     return context;
 };

@@ -3,9 +3,16 @@ import style from "./ProductDetail.module.css";
 import Carrousel from "@/components/carrousel/Carrousel";
 import Details from "@/components/productDetail/Details";
 
-export const ProductDetail = async ({ params }: { params: { slug: string } }) => {
-    const { slug } = params;
-    const { id, name, price, description, image, stock, categoryId } = await getProductById(Number(slug));
+
+export default async function ProductDetail({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params; 
+
+    const productId = Number(slug);
+    if (isNaN(productId)) {
+        throw new Error("Invalid slug provided.");
+    }
+
+    const { id, name, price, description, image, stock, categoryId } = await getProductById(productId);
 
     return (
         <div className="w-full min-h-screen flex flex-col items-center justify-start px-4 py-6">
@@ -28,4 +35,3 @@ export const ProductDetail = async ({ params }: { params: { slug: string } }) =>
     );
 };
 
-export default ProductDetail;

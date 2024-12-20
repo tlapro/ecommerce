@@ -5,7 +5,7 @@ import RenderHome from "./RenderHome";
 import { getProducts } from "@/helpers/getProducts";
 
 
-export const Home = async () => {
+export default async function Home () {
         const fetchData: IProduct[] = await getProducts();
     return (
         <div>
@@ -13,5 +13,3 @@ export const Home = async () => {
         </div>
     )
 }
-
-export default Home;

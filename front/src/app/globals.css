@@ -94,6 +94,12 @@ input:focus {
   top: 8vh !important; 
   right: 0px !important;  
 }
+@media (min-width: 0) and (max-width: 1366px) {
+  .swal2-toast {
+    top: 12vh !important; 
+    right: 0px !important;  
+  }
+}
 .bg-animated-gradient {
   background: linear-gradient(-45deg, 
     var(--background-color),

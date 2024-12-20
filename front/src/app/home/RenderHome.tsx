@@ -3,7 +3,7 @@ import style from "./Home.module.css";
 import Card from "@/components/card/Card";
 
 
-const RenderHome = ({ fetchData } : { fetchData: IProduct[] }) => {
+export default function RenderHome ({ fetchData } : { fetchData: IProduct[] }) {
     return (
         <div>
             <div className={style.containerTitle}>
@@ -30,4 +30,3 @@ const RenderHome = ({ fetchData } : { fetchData: IProduct[] }) => {
         </div>
     )
 }
-export default RenderHome;

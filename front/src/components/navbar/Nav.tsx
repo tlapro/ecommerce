@@ -27,15 +27,19 @@ const Nav = () => {
             {navConfig.map((navLink: NavItem) => {
                 const Icon = navLink.icon; 
             return !navLink.isPrivate ? (
-                <Link key={navLink.path} className={styles.navLink} href={navLink.path}>
+                <div key={navLink.path}>
+                <Link className={styles.navLink} href={navLink.path}>
                     <Icon size={25}/>
                 </Link>
+                </div>
             ) : (
+                <div key={navLink.path}>
             <Private>
                 <Link key={navLink.path} className={styles.navLink} href={navLink.path}>
                 <Icon size={25}/>
             </Link>
             </Private>
+            </div>
             )          
         })}
 

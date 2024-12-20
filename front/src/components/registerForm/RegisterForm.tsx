@@ -81,7 +81,7 @@ export const RegisterForm = () => {
 
                         { SignUpConfig.map(({name, label, type, placeholder }) => {
                             return (
-                                <div className={style.registerReq}>
+                                <div key={name} className={style.registerReq}>
                                 <FormInput 
                                 key={name}
                                 name={name}
