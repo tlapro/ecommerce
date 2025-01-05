@@ -12,8 +12,8 @@ export default function RenderHome ({ fetchData } : { fetchData: IProduct[] }) {
     const [selected, setSelected] = useState<string>("");
     const [search, setSearch] = useState<string>("");
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelected(e.target.value);
         setSearch("");
+        setSelected(e.target.value);
     };
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSelected("");
