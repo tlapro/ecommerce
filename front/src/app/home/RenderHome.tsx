@@ -23,7 +23,7 @@ export default function RenderHome ({ fetchData } : { fetchData: IProduct[] }) {
         const matchesCategory =
           selected.length === 0 || product.categoryId === parseInt(selected);
         const matchesSearch =
-          search.length === 0 || product.name.toLowerCase().includes(search.toLowerCase());
+          search.length === 0 || product.name.toLowerCase().startsWith(search.toLowerCase());
         return matchesCategory && matchesSearch;
       })
 
@@ -48,7 +48,7 @@ export default function RenderHome ({ fetchData } : { fetchData: IProduct[] }) {
                     <option value="3">Tablets</option>
                     <option value="4">Headphones</option>
                     <option value="5">Accessories</option>
-                    <option value="6">Computers</option>
+                    <option value="6">Speakers</option>
                 </select>
                 
             </div>
