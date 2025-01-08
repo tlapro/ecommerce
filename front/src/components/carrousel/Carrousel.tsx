@@ -25,10 +25,8 @@ export const Carrousel = ({ id } : { id: number }) => {
         const handleResize = () => {
             if (window.innerWidth <= 768) {
                 setItemsToShow(1);
-            } else if (window.innerWidth <= 1024) {
-                setItemsToShow(2);
             } else {
-                setItemsToShow(3);
+                setItemsToShow(2);
             }
         };
 
@@ -38,11 +36,11 @@ export const Carrousel = ({ id } : { id: number }) => {
     }, []);
 
     const handlePrev = () => {
-        setStartIndex((prev) => Math.max(prev - 1, 0));
+        setStartIndex((prev) => (prev - 1 + products.length) % products.length);
     };
-
+    
     const handleNext = () => {
-        setStartIndex((prev) => Math.min(prev + 1, products.length - itemsToShow));
+        setStartIndex((prev) => (prev + 1) % products.length);
     };
 
     if (products.length === 0) {

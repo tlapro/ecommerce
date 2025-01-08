@@ -66,19 +66,18 @@ export const CartPage = () => {
     }
   };
 
-  // Aumentar la cantidad en el estado local
+
   const handleIncrement = (id: number) => {
     setQuantityMap(prevState => ({
       ...prevState,
-      [id]: (prevState[id] || 1) + 1 // Incrementar cantidad local
+      [id]: (prevState[id] || 1) + 1
     }));
   };
 
-  // Disminuir la cantidad en el estado local
   const handleDecrement = (id: number) => {
     setQuantityMap(prevState => ({
       ...prevState,
-      [id]: Math.max(1, (prevState[id] || 1) - 1) // No permitir que la cantidad sea menor a 1
+      [id]: Math.max(1, (prevState[id] || 1) - 1) 
     }));
   };
 

@@ -25,7 +25,8 @@ export default function RenderHome ({ fetchData } : { fetchData: IProduct[] }) {
         const matchesSearch =
           search.length === 0 || product.name.toLowerCase().includes(search.toLowerCase());
         return matchesCategory && matchesSearch;
-      });
+      })
+
     
     return (
         <div>
@@ -49,6 +50,7 @@ export default function RenderHome ({ fetchData } : { fetchData: IProduct[] }) {
                     <option value="5">Accessories</option>
                     <option value="6">Computers</option>
                 </select>
+                
             </div>
             <div className={style.cardsContainer}>
             {filteredProduct.length > 0 ? (
