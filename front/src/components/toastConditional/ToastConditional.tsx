@@ -2,13 +2,9 @@
 import Swal from 'sweetalert2';
 
 const getThemeVariables = () => {
-  // Obtén el tema desde localStorage
+
   const theme = localStorage.getItem('theme'); 
 
-  // Determina si el modo es claro o oscuro
-  
-
-  // Define los colores dependiendo del tema
   const themeColors = theme === 'light' ? {
     backgroundColor: '#ffffff',
     textColor: '#000000',        
