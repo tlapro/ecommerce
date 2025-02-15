@@ -59,7 +59,6 @@ Antes de ejecutar el proyecto, asegúrate de tener instalado:
 - TypeORM
 - PostgreSQL
 - JWT para autenticación
-- Swagger para documentación de la API
 
 ### Frontend
 - Next.js
